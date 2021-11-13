@@ -1,0 +1,8 @@
+Step 1
+Open Maven TAB on the right side and execute "maven clean" (this will remove target folder)
+
+Step 2
+After we execute maven clean, next command is "maven install" (this will be install all dependencies and create .jar file"
+
+Step 3
+Execute java -jar name-of-the-app.jar (to specify port use the flag --server.port=some_port

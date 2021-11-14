@@ -1,30 +1,17 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+import Home from "./components/views/Home";
+import ClientList from "./components/client/ClientList";
 
 const App = () => {
-  const [clients, setClients] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("/clients")
-      .then((response) => {
-        const { data } = response;
-        setClients(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-
   return (
-    <div className="container">
-      <h2>Clients</h2>
-      {clients?.map((client) => (
-        <div key={client.id}>
-          {client.name} {client.email}
-        </div>
-      ))}
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/" exact={true} component={Home} />
+        <Route path="/clients" exact={true} component={ClientList} />
+        {/* <Route path="/clients/:id" component={ClientEdit} /> */}
+      </Switch>
+    </Router>
   );
 };
 

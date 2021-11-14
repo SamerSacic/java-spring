@@ -2,20 +2,19 @@ package com.sascode.crud.service;
 
 import com.sascode.crud.domain.Client;
 import com.sascode.crud.repository.ClientRepository;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
 public class ClientServiceImpl implements ClientService {
-    private final ClientRepository clientRepository;
+    @Autowired
+    ClientRepository clientRepository;
 
     @Override
-    public Optional<Client> findClient(Long id) {
-        return clientRepository.findById(id);
+    public Client findClient(Long id) {
+        return clientRepository.findById(id).orElseThrow(RuntimeException::new);
     }
 
     @Override

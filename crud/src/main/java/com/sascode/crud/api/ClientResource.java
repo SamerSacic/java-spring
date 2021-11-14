@@ -23,7 +23,7 @@ public class ClientResource {
 
     @GetMapping("/{id}")
     public Client getClient(@PathVariable Long id) {
-        return clientService.findClient(id).orElseThrow(RuntimeException::new);
+        return clientService.findClient(id);
     }
 
     @PostMapping
